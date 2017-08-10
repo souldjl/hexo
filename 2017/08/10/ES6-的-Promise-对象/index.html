@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="soul-djl">
 <meta property="og:description" content="目录一段使用了promise的基本语句代码123456789101112131415function helloWorld (ready) &amp;#123;    return new Promise(function (resolve, reject) &amp;#123;        if (ready) &amp;#123;            resolve(&quot;Hello World!&quot;);">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-10T01:59:40.300Z">
+<meta property="og:updated_time" content="2017-08-10T02:01:22.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6 的 Promise 对象">
 <meta name="twitter:description" content="目录一段使用了promise的基本语句代码123456789101112131415function helloWorld (ready) &amp;#123;    return new Promise(function (resolve, reject) &amp;#123;        if (ready) &amp;#123;            resolve(&quot;Hello World!&quot;);">
@@ -352,10 +352,10 @@
       
         <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h2 id="一段使用了promise的基本语句代码"><a href="#一段使用了promise的基本语句代码" class="headerlink" title="一段使用了promise的基本语句代码"></a>一段使用了<code>promise</code>的基本语句代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">helloWorld</span> (<span class="params">ready</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (ready) &#123;</div><div class="line">            resolve(<span class="string">"Hello World!"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            reject(<span class="string">"Good bye!"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">helloWorld(<span class="literal">true</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">message</span>) </span>&#123;</div><div class="line">    alert(message);</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</div><div class="line">    alert(error);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <blockquote>
-<p>上面的代码实现的功能非常简单~~，<code>helloWord</code>函数接受一个参数，如果为 true 就打印 “Hello World!”，如果为 false 就打印错误的信息。<code>helloWord</code> 函数返回的是一个 ==Promise== 对象。</p>
-</blockquote>
+<p>上面的代码实现的功能非常简单~~，<code>helloWord</code>函数接受一个参数，如果为 true 就打印 “Hello World!”，如果为 false 就打印错误的信息。<code>helloWord</code> 函数返回的是一个 ==Promise== 对象。<br><a id="more"></a></p>
 <hr>
-<h2 id="resolve-和-reject"><a href="#resolve-和-reject" class="headerlink" title="resolve 和 reject"></a>resolve 和 reject</h2><p>在 Promise 对象当中有两个重要方法————resolve 和 reject。</p>
+<h2 id="resolve-和-reject"><a href="#resolve-和-reject" class="headerlink" title="resolve 和 reject"></a>resolve 和 reject</h2></blockquote>
+<p>在 Promise 对象当中有两个重要方法————resolve 和 reject。</p>
 <blockquote>
 <p><code>resolve</code> 方法可以使 <code>Promise</code>对象的状态改变成成功，同时传递一个参数用于后续成功后的操作，在这个例子当中就是 Hello World! 字符串。</p>
 <p><code>reject</code> 方法则是将 <code>Promise</code> 对象的状态改变为失败，同时将错误的信息传递到后续错误处理的操作。</p>
