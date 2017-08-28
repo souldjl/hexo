@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="soul-djl">
 <meta property="og:description" content="目录一段使用了promise的基本语句代码123456789101112131415function helloWorld (ready) &amp;#123;    return new Promise(function (resolve, reject) &amp;#123;        if (ready) &amp;#123;            resolve(&quot;Hello World!&quot;);">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-10T02:03:12.145Z">
+<meta property="og:updated_time" content="2017-08-28T02:55:01.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6 的 Promise 对象">
 <meta name="twitter:description" content="目录一段使用了promise的基本语句代码123456789101112131415function helloWorld (ready) &amp;#123;    return new Promise(function (resolve, reject) &amp;#123;        if (ready) &amp;#123;            resolve(&quot;Hello World!&quot;);">
@@ -502,7 +502,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -515,7 +515,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -588,7 +588,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        
+
+
+<div class="copyright" >
   
   &copy; 
   <span itemprop="copyrightYear">2017</span>
@@ -610,6 +613,54 @@
   </a>
 </div>
 
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var a_idx = 0;
+	jQuery(document).ready(function($) {
+    $("body").click(function(e) {
+        var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");
+        var $i = $("<span/>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        $i.css({
+            "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#ff6651"
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove();
+        });
+    });
+});
+</script>
+<script type="text/javascript">
+$(function(){
+    document.oncontextmenu = function(e){
+        return false;
+    };
+    document.onkeydown = function(e){
+        var e = e || event;
+        var nums = [113,114,115,116,117,118,119,120,121,122,123];
+        for(var i in nums){
+            if(e.keyCode == nums[i]){
+                return false;
+            }
+        }
+    };
+});
+</script>
 
         
 
