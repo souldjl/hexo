@@ -11,7 +11,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
-
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
 
 
 
@@ -102,7 +116,7 @@
 <meta property="og:site_name" content="soul-djl">
 <meta property="og:description" content="按照流程进行如下初始环境配置 本地环境搭建1$ npm install hexo-cli -g 1$ hexo init 1$ npm install 1$ hexo g 1$ hexo s 运行localhost:4000端口即可访问">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-08T06:16:43.230Z">
+<meta property="og:updated_time" content="2017-08-31T04:06:04.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用hexo搭建的blog的流程">
 <meta name="twitter:description" content="按照流程进行如下初始环境配置 本地环境搭建1$ npm install hexo-cli -g 1$ hexo init 1$ npm install 1$ hexo g 1$ hexo s 运行localhost:4000端口即可访问">
@@ -365,6 +379,43 @@
           
           
 
+          <div>
+                
+                  
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2017/08/08/利用hexo搭建的blog的流程/">利用hexo搭建的blog的流程</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 souldjl 的个人博客">souldjl</a></p>
+  <p><span>发布时间:</span>2017年08月08日 - 11:08</p>
+  <p><span>最后更新:</span>2017年08月31日 - 12:08</p>
+  <p><span>原始链接:</span><a href="/2017/08/08/利用hexo搭建的blog的流程/" title="利用hexo搭建的blog的流程">http://yoursite.com/2017/08/08/利用hexo搭建的blog的流程/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2017/08/08/利用hexo搭建的blog的流程/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+</div>
+<script>
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({
+          title: "",
+          text: '复制成功',
+          html: false,
+          timer: 500,
+          showConfirmButton: false
+        });
+      });
+    }));
+</script>
+
+                
+          </div>
+
           
 
           
@@ -444,9 +495,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+            <a href="/tags/笔记/" <i class="fa fa-tag"></i> 笔记</a>
           
-            <a href="/tags/教程/" rel="tag"># 教程</a>
+            <a href="/tags/教程/" <i class="fa fa-tag"></i> 教程</a>
           
         </div>
       
@@ -489,6 +540,29 @@
 
 
     <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
       
     </div>
   </div>
