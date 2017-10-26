@@ -325,6 +325,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/26/利用本地存储解决刷新后页面空白问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="souldjl">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ou51b4z7g.bkt.clouddn.com/17-8-7/42688667.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="soul-djl">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/26/利用本地存储解决刷新后页面空白问题/" itemprop="url">利用本地存储解决vue开发的刷新后页面空白问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-26T09:06:09+08:00">
+                2017-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/10/26/利用本地存储解决刷新后页面空白问题/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://yoursite.com/2017/10/26/利用本地存储解决刷新后页面空白问题/" class="cy_cmt_count" data-xid="2017/10/26/利用本地存储解决刷新后页面空白问题/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="用vue开发的单页面应用，为什么不能在内页刷新？"><a href="#用vue开发的单页面应用，为什么不能在内页刷新？" class="headerlink" title="用vue开发的单页面应用，为什么不能在内页刷新？"></a>用vue开发的单页面应用，为什么不能在内页刷新？</h2><hr>
+<p>即使改成hash模式，刷新页面后store里的值还是会丢失啊，所以用了本地存储来解决问题</p>
+<hr>
+<h3 id="一-新建-plugins-js"><a href="#一-新建-plugins-js" class="headerlink" title="一 .新建 plugins.js"></a>一 .新建 plugins.js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">  STAGE_MUTATION_USER_OPTIONS,</div><div class="line">  STAGE_MUTATION_SERVER_CONDITIONS_1,</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'./mutations'</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> localStoragePlugin = <span class="function"><span class="params">store</span> =&gt;</span> &#123;</div><div class="line">  store.subscribe(<span class="function">(<span class="params">mutation, state</span>) =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log( <span class="string">'mutation'</span>, mutation, <span class="string">'state'</span>, state )</div><div class="line"></div><div class="line">    <span class="keyword">if</span>( STAGE_MUTATION_SERVER_CONDITIONS_1 === (mutation.type) ) &#123;</div><div class="line">      <span class="built_in">console</span>.log( mutation )</div><div class="line">      <span class="built_in">window</span>.localStorage.setItem(mutation.payload.key, <span class="built_in">JSON</span>.stringify(mutation.payload.value))</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>( STAGE_MUTATION_USER_OPTIONS.indexOf(mutation.type) &gt;= <span class="number">0</span> ) &#123;</div><div class="line">      <span class="built_in">window</span>.localStorage.setItem(<span class="string">"options"</span>, <span class="built_in">JSON</span>.stringify(state.options))</div><div class="line">      <span class="built_in">console</span>.log( state.options )</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>( mutation.type == <span class="string">'getCategoryById'</span> ) &#123;</div><div class="line">        <span class="built_in">window</span>.localStorage.setItem(<span class="string">"categoryInfo"</span>, <span class="built_in">JSON</span>.stringify(state.categoryInfo))</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>( mutation.type == <span class="string">'getQuestionsToCategory'</span> ) &#123;</div><div class="line">        <span class="built_in">window</span>.localStorage.setItem(<span class="string">"qList"</span>, <span class="built_in">JSON</span>.stringify(state.qList))</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>( mutation.type == <span class="string">'userSelectQids'</span> || mutation.type == <span class="string">'userSelectAnswer'</span> ||  mutation.type == <span class="string">'getQuestionsToCategory'</span> ) &#123;</div><div class="line">        <span class="built_in">window</span>.localStorage.setItem(<span class="string">"userAnswerInfos"</span>, <span class="built_in">JSON</span>.stringify(state.userAnswerInfos))</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> [localStoragePlugin]</div></pre></td></tr></table></figure>
+<h3 id="二-mutations-js"><a href="#二-mutations-js" class="headerlink" title="二. mutations.js"></a>二. mutations.js</h3><hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> userAnswerInfoJSON = <span class="built_in">window</span>.localStorage.getItem(<span class="string">'userAnswerInfos'</span>);</div><div class="line"><span class="keyword">const</span> userAnswerInfos = <span class="built_in">JSON</span>.parse(userAnswerInfoJSON) || &#123;&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'init'</span>,<span class="string">'options'</span>, optionsJSON, options);</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> state = &#123;</div><div class="line">  provinces  : <span class="built_in">JSON</span>.parse(<span class="built_in">window</span>.localStorage.getItem(<span class="string">'provinces'</span>)) || [],</div><div class="line">  stages: <span class="built_in">JSON</span>.parse(<span class="built_in">window</span>.localStorage.getItem(<span class="string">'stages'</span>)) || [],</div><div class="line">  examTypes: <span class="built_in">JSON</span>.parse(<span class="built_in">window</span>.localStorage.getItem(<span class="string">'examTypes'</span>)) || [],</div><div class="line">  <span class="comment">// subjects:[],</span></div><div class="line">  options:&#123;</div><div class="line">    examType: options.examType || <span class="string">''</span>,</div><div class="line">    area: options.area || <span class="string">''</span>,</div><div class="line">    preferredSubjects: options.preferredSubjects || [],</div><div class="line">    subject: options.subject &gt; <span class="number">0</span> ? options.subject : <span class="number">0</span>,</div><div class="line">    preferredCategories:options.preferredCategories || [],</div><div class="line">    category: options.category &gt; <span class="number">0</span> ? options.category : <span class="number">0</span>,</div><div class="line">    subCategory: options.subCategory &gt; <span class="number">0</span> ? options.subCategory : <span class="number">0</span>,</div><div class="line">  &#125;,</div><div class="line">  categoryInfo:<span class="built_in">JSON</span>.parse(<span class="built_in">window</span>.localStorage.getItem(<span class="string">'categoryInfo'</span>)) || [],</div><div class="line">  qList: <span class="built_in">JSON</span>.parse(<span class="built_in">window</span>.localStorage.getItem(<span class="string">'qList'</span>)) ||[],</div><div class="line">  userAnswerInfos:&#123;</div><div class="line">    qids: userAnswerInfos.qids || [],</div><div class="line">    answer: userAnswerInfos.answer ||[],</div><div class="line">    trueAnswer: userAnswerInfos.trueAnswer ||[]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> STAGE_MUTATION_USER_OPTIONS = [</div><div class="line">  <span class="string">'stageExamType'</span>,</div><div class="line">  <span class="string">'stageArea'</span>,</div><div class="line">  <span class="string">'stagePhase'</span>,</div><div class="line">  <span class="string">'stagePreferredSubjects'</span>,</div><div class="line">  <span class="string">'stageSubject'</span>,</div><div class="line">  <span class="string">'stagePreferredCategories'</span>,</div><div class="line">  <span class="string">'stageCategory'</span>,</div><div class="line">  <span class="string">'stageSubCategory'</span>,</div><div class="line">];</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> STAGE_MUTATION_SERVER_CONDITIONS_1 = <span class="string">"stageServerConditions1"</span>;</div></pre></td></tr></table></figure>
+<h3 id="三-项目目录结构"><a href="#三-项目目录结构" class="headerlink" title="三 .项目目录结构"></a>三 .项目目录结构</h3><p><img src="http://otkpvfszt.bkt.clouddn.com/1.png" alt=""><br><img src="http://otkpvfszt.bkt.clouddn.com/5.png" alt=""></p>
+<blockquote>
+<p>解决思路：页面的显示很多依靠vuex的store取值的，而vuex的存储会造成页面刷新的时候值为空，所以解决方法就是每次更改store的时候再storage里面存储一份，取值之前 则先从storage里面取值，否则直接给 默认值(空对象或空数组)</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div>
+              
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/28/gulp-api之gulp-task/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1632,7 +1777,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
